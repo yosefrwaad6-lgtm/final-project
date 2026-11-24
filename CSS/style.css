@@ -1,0 +1,483 @@
+/* =====================================================
+   IT second year - التنسيقات العامة للموقع (Global Styles)
+   هذا الملف يتم تحميله في جميع صفحات الموقع لتوحيد التصميم.
+   ===================================================== */
+
+
+/* -----------------------------------------------------
+   1. متغيرات التصميم (Design Tokens / CSS Variables)
+   نظام ألوان متكامل مستوحى من باليت التيل والبترولي:
+   #031716, #032F30, #0A7075, #0C969C, #6BA3BE, #274D60
+   ----------------------------------------------------- */
+:root {
+    /* درجات التيل / البترولي الفيروزي (Teal Palette Scale) */
+    --teal-50:  #F0F7F8;   /* تيل هادئ جداً للخلفيات الفاتحة المريحة للعين */
+    --teal-100: #D4EFF2;   /* تيل فاتح لكروت المحاضرات والحدود الناعمة */
+    --teal-200: #94CED2;   /* تيل ناعم للحدود والخطوط الفاصلة */
+    --teal-400: #0C969C;   /* فيروزي حيوي من اللوحة للـ Focus والتأثيرات النشطة */
+    --teal-600: #0A7075;   /* تيل محيطي أنيق من اللوحة للبادجات والأزرار والروابط */
+    --teal-800: #032F30;   /* تيل داكن غني من اللوحة لخلفية الهيدر وحالات الـ Hover */
+    --teal-900: #031716;   /* تيل داكن جداً (شبه أسود) من اللوحة للعناوين والفوتر */
+
+    /* درجات السليت / البترولي الأزرق (Slate / Petrol Blue Scale) */
+    --slate-50:  #F4F8FA;  /* رمادي بترولي فاتح جداً */
+    --slate-100: #E0EBF0;  /* خطوط فاصلة رقيقة */
+    --slate-200: #6BA3BE;  /* أزرق رمادي ناعم من اللوحة للبادجات والديكور */
+    --slate-400: #467991;  /* بترولي متوسط */
+    --slate-600: #274D60;  /* كحلي بترولي أنيق من اللوحة لكروت السكاشن والأزرار */
+    --slate-800: #1B3847;  /* بترولي داكن لحالات Hover */
+    --slate-900: #11242E;  /* نصوص داكنة */
+
+    /* متغيرات التوافق مع التسميات السابقة */
+    --green-50:  var(--teal-50);
+    --green-100: var(--teal-100);
+    --green-200: var(--teal-200);
+    --green-400: var(--teal-400);
+    --green-600: var(--teal-600);
+    --green-800: var(--teal-800);
+    --green-900: var(--teal-900);
+
+    --brown-50:  var(--teal-50);
+    --brown-100: var(--slate-100);
+    --brown-200: var(--teal-400);
+    --brown-400: var(--slate-200);
+    --brown-600: var(--slate-600);
+    --brown-800: var(--slate-800);
+    --brown-900: var(--teal-900);
+
+    /* تخصيص استخدام الألوان في الموقع (Role Colors) */
+    --color-page: #F2F7F8;               /* خلفية الصفحة كاملة بدرجة هادئة ومريحة للعين */
+    --color-card-bg: #FFFFFF;            /* خلفية الكروت والبطاقات الأساسية */
+    --color-text: #172D33;               /* لون النصوص عالي الوضوح والتباين */
+    --color-heading: #031716;            /* لون العناوين الرئيسية (#031716) */
+    --color-header: #032F30;             /* لون الهيدر (#032F30) */
+    --color-header-text: #F0F7F8;         /* لون نصوص الهيدر الفاتح */
+    --color-footer: #031716;             /* لون الفوتر (#031716) */
+    --color-footer-text: #6BA3BE;        /* لون نصوص الفوتر من درجات الباليت (#6BA3BE) */
+    --color-lecture: #D4EFF2;            /* لون كارت المحاضرة (تيل فاتح متباين) */
+    --color-lecture-text: #031716;       /* لون نص كارت المحاضرة عالي التباين */
+    --color-section: #274D60;            /* لون كارت السكشن من الباليت (#274D60) */
+    --color-section-text: #FFFFFF;       /* لون نص كارت السكشن */
+    --color-accent: #0C969C;             /* اللون الفيروزي الحيوي (#0C969C) */
+    --color-primary: #0A7075;            /* اللون التيل الأساسي (#0A7075) */
+
+    /* أنواع الخطوط المستخدمة من Google Fonts */
+    --font-heading: 'Poppins', system-ui, sans-serif; /* خط العناوين */
+    --font-body: 'Inter', system-ui, sans-serif;       /* خط النصوص العامة */
+
+    /* الأحجام والمقاسات القياسية */
+    --radius: 10px;       /* استدارة حواف البطاقات والأزرار (Border Radius) */
+    --page-width: 1100px; /* أقصى عرض للمحتوى في الصفحة */
+}
+
+
+/* -----------------------------------------------------
+   2. التنسيقات الأساسية وتصفير المسافات (Base Styles & Reset)
+   ----------------------------------------------------- */
+
+/* تطبيق box-sizing على جميع العناصر لحساب الـ Padding والـ Border ضمن العرض الإجمالي */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* تفعيل التمرير السلس والانسيابي عند الضغط على الروابط الداخلية (Smooth Scrolling) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* تنسيق جسم الصفحة الأساسي */
+body {
+    margin: 0;                     /* إزالة الهوامش الافتراضية للمتصفح */
+    min-height: 100vh;             /* جعل الصفحة بارتفاع الشاشة على الأقل */
+    display: flex;                 /* استخدام Flexbox لتثبيت الفوتر أسفل الصفحة دائماً */
+    flex-direction: column;        /* ترتيب العناصر عمودياً (هيدر ثم محتوى ثم فوتر) */
+    font-family: var(--font-body); /* تحديد خط النصوص الأساسي */
+    font-size: 1rem;               /* حجم الخط القياسي (16px) */
+    line-height: 1.6;              /* تباعد مريح بين الأسطر لسهولة القراءة */
+    color: var(--color-text);      /* تطبيق لون النص الداكن عالي التباين */
+    background: var(--color-page); /* تطبيق لون خلفية الصفحة التيل الهادئ */
+}
+
+/* العنصر الرئيسي للمحتوى يتمدد لملء الفراغ ودفع الفوتر للأسفل */
+main {
+    flex: 1;
+}
+
+/* مسافات عمودية موحدة لكل قسم في الصفحة */
+.section {
+    padding-block: 2.5rem; /* مسافة داخلية من الأعلى والأسفل (40px) */
+}
+
+/* تنسيق العناوين (H1, H2, H3) */
+h1,
+h2,
+h3 {
+    margin: 0 0 0.75rem;          /* مسافة صغيرة أسفل العنوان */
+    font-family: var(--font-heading); /* خط العناوين المميز (Poppins) */
+    font-weight: 600;             /* سمك الخط عريض */
+    line-height: 1.2;             /* تقليل التباعد بين سطور العناوين */
+    color: var(--color-heading);  /* لون العناوين التيل الداكن (#031716) */
+}
+
+/* حجم العنوان الرئيسي H1 متجاوب مع حجم الشاشة */
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem); /* يتغير ديناميكياً بين 32px و 48px */
+}
+
+/* حجم العنوان الفرعي H2 متجاوب مع حجم الشاشة */
+h2 {
+    font-size: clamp(1.4rem, 3vw, 1.8rem); /* يتغير ديناميكياً بين 22px و 28px */
+}
+
+/* حجم عنوان الأيام والبطاقات H3 */
+h3 {
+    font-size: 1.15rem;
+}
+
+/* تنسيق الفقرات النصية */
+p {
+    margin: 0 0 1rem;
+    max-width: 65ch; /* تحديد أقصى عرض للسطر لراحة العين أثناء القراءة */
+}
+
+/* تنسيق الروابط النصية */
+a {
+    color: var(--teal-600); /* لون الروابط الأساسي من الباليت (#0A7075) */
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--teal-800);
+}
+
+/* إطار التحديد عند التنقل باستخدام الكيبورد (Accessibility) */
+:focus-visible {
+    outline: 3px solid var(--teal-400); /* فيروزي واضح من الباليت (#0C969C) */
+    outline-offset: 2px;
+}
+
+
+/* -----------------------------------------------------
+   3. حاوية المحتوى (Container)
+   تقوم بتوسيط المحتوى ومنعه من التمدد بشكل مفرط على الشاشات الكبيرة
+   ----------------------------------------------------- */
+.container {
+    width: 100%;                  /* عرض كامل على الشاشات الصغيرة */
+    max-width: var(--page-width); /* لا يتجاوز 1100px */
+    margin-inline: auto;          /* توسيط المحتوى أفقياً في منتصف الشاشة */
+    padding-inline: 1.25rem;      /* مسافة أمان على الجانبين (20px) */
+}
+
+
+/* -----------------------------------------------------
+   4. الهيدر وشريط التنقل (Header & Navigation)
+   ----------------------------------------------------- */
+
+/* الهيدر العلوي يثبت في أعلى الشاشة أثناء التمرير (Sticky) */
+.site-header {
+    position: sticky;              /* يظل مثبتاً في قمة الشاشة */
+    top: 0;                        /* يلتصق بالأعلى */
+    z-index: 10;                   /* يظهر فوق باقي عناصر الصفحة */
+    background: var(--color-header); /* الخلفية الخضراء الداكنة */
+    color: var(--color-header-text); /* لون النص الفاتح */
+}
+
+/* ترتيب عناصر الهيدر (اسم الموقع على اليسار والروابط على اليمين) */
+.header-inner {
+    display: flex;
+    flex-wrap: wrap;               /* يلتف تلقائياً على الشاشات الصغيرة */
+    align-items: center;           /* محاذاة العناصر عمودياً بالوسط */
+    justify-content: space-between;/* ترك مسافة بين اللوجو وقائمة الروابط */
+    gap: 0.5rem 1.5rem;
+    padding-block: 0.9rem;
+}
+
+/* شعار أو اسم الموقع في الهيدر */
+.site-name {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--color-header-text);
+    text-decoration: none;         /* إزالة الخط السفلي للرابط */
+}
+
+/* قائمة روابط الهيدر */
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;              /* إزالة النقاط النقطية للقائمة */
+}
+
+/* زر الرابط الفردي في الهيدر */
+.nav-list a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+    color: var(--color-header-text);
+    text-decoration: none;
+    transition: background-color 0.2s; /* حركة ناعمة عند مرور الماوس */
+}
+
+/* خط سفلي يظهر بانزلاق عند المرور أو التنقل بلوحة المفاتيح */
+.nav-list a::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0.8rem;
+    bottom: 0.25rem;
+    height: 2px;
+    background: var(--teal-400); /* فيروزي مميز للرابط النشط (#0C969C) */
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+}
+
+.nav-list a:hover::after,
+.nav-list a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* تأثير مرور الماوس على روابط الهيدر */
+.nav-list a:hover {
+    background: var(--teal-600);
+}
+
+
+/* -----------------------------------------------------
+   5. الأزرار العامة (Buttons)
+   ----------------------------------------------------- */
+
+/* الزر الأساسي (كحلي بترولي من الباليت #274D60) */
+.btn,
+a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.72rem 1.4rem;
+    border-radius: var(--radius);
+    background: var(--slate-600);      /* لون كحلي بترولي #274D60 */
+    color: #ffffff !important;         /* نص أبيض ناصع وثابت لا يتأثر بقواعد a:hover */
+    font-family: var(--font-heading);
+    font-weight: 500;
+    text-decoration: none !important;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(39, 77, 96, 0.2);
+    transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease, color 0.2s ease;
+}
+
+/* تأثير مرور الماوس والتركيز على الزر البترولي */
+.btn:hover,
+a.btn:hover,
+.btn:focus-visible,
+a.btn:focus-visible {
+    background: var(--teal-600);       /* يتحول لتيل محيطي أنيق (#0A7075) */
+    color: #ffffff !important;         /* يظل أبيض ناصع وواضح دائماً */
+    transform: translateY(-2px);       /* رفع خفيف يعطي إحساساً تفاعلياً */
+    box-shadow: 0 6px 16px rgba(10, 112, 117, 0.35);
+}
+
+.btn:active,
+a.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(10, 112, 117, 0.2);
+}
+
+/* الزر التيل الفيروزي (مثل زر تصفح المواد وزر جوجل درايف) */
+.btn-green,
+a.btn-green {
+    background: var(--teal-600);       /* تيل محيطي (#0A7075) */
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(10, 112, 117, 0.25);
+}
+
+/* تأثير مرور الماوس والتركيز على الزر التيل */
+.btn-green:hover,
+a.btn-green:hover,
+.btn-green:focus-visible,
+a.btn-green:focus-visible {
+    background: var(--teal-400);       /* فيروزي مشرق وجذاب من الباليت (#0C969C) */
+    color: #ffffff !important;         /* نص أبيض ناصع ومشرق */
+    transform: translateY(-2px);       /* رفع خفيف أنيق */
+    box-shadow: 0 6px 18px rgba(12, 150, 156, 0.45);
+}
+
+.btn-green:active,
+a.btn-green:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(12, 150, 156, 0.2);
+}
+
+/* حاوية تضع الأزرار بجانب بعضها مع مسافة فاصلة */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+
+/* -----------------------------------------------------
+   6. الفوتر (Footer)
+   ----------------------------------------------------- */
+.site-footer {
+    padding-block: 1.5rem;
+    background: var(--color-footer);      /* خلفية خضراء داكنة */
+    color: var(--color-footer-text);      /* نصوص خضراء فاتحة */
+    text-align: center;                  /* توسيط النص */
+}
+
+.site-footer p {
+    margin: 0 auto;
+}
+
+
+/* -----------------------------------------------------
+   7. دعم تفضيلات تقليل الحركة (Accessibility / Reduced Motion)
+   إيقاف الحركات إذا كان المستخدم يفضل عدم رؤية تأثيرات حركية
+   ----------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+
+/* -----------------------------------------------------
+   8. تنسيقات صفحات تفاصيل المواد (Subject Detail Pages)
+   ----------------------------------------------------- */
+
+/* زر الرجوع لقائمة المواد (السهم مع النص) */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;                  /* مسافة صغيرة بين السهم والكلمة */
+    margin-bottom: 1.25rem;
+    color: var(--teal-600);        /* تيل من الباليت (#0A7075) */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+/* تفعيل خط سفلي وتغميق اللون عند مرور الماوس */
+.back-link:hover {
+    color: var(--teal-800);        /* تيل داكن #032F30 */
+    text-decoration: underline;
+}
+
+/* بطاقة عرض تفاصيل المادة (بيضاء مع ظل خفيف وإطار تيل هادئ) */
+.subject-detail-card {
+    background: #ffffff;
+    border: 1px solid var(--teal-200);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(3, 47, 48, 0.06); /* ظل خفيف أنيق */
+}
+
+/* شارة كود المادة (مثل IT201, MATH203) */
+.subject-code-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    background: var(--teal-600);   /* تيل #0A7075 */
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+/* صندوق معلومات مواعيد المحاضرة والسكاشن للمادة */
+.subject-meta-info {
+    margin: 1.25rem 0 1.5rem;
+    padding: 1rem;
+    background: var(--teal-50);             /* خلفية تيل باهتة مريحة للعين */
+    border-radius: var(--radius);
+    border-left: 4px solid var(--teal-400);  /* خط جانبي فيروزي بارز (#0C969C) */
+}
+
+.subject-meta-info p {
+    margin: 0.35rem 0;
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
+/* زر فتح مجلد جوجل درايف */
+.btn-drive,
+a.btn-drive {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;                   /* مسافة بين أيقونة المجلد والنص */
+    font-size: 1rem;
+    background: var(--teal-600);
+    color: #ffffff !important;
+}
+
+.btn-drive:hover,
+a.btn-drive:hover {
+    background: var(--teal-400);   /* فيروزي مشرق وجذاب #0C969C */
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(12, 150, 156, 0.45);
+}
+
+
+/* -----------------------------------------------------
+   9. حركات الظهور التدريجي عند التمرير (Pure CSS Scroll Reveal)
+   تمت برمجتها بـ HTML & CSS فقط دون أي كود JavaScript
+   ----------------------------------------------------- */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        translate: 0 26px;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+/* تأثير تحميل انسيابي ناعم للواجهة الترحيبية عند فتح الموقع */
+.hero {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ظهور تدريجي للعناصر أثناء التمرير في المتصفحات (CSS Scroll-driven Animations) */
+@supports (animation-timeline: view()) {
+    /* ظهور كل يوم في جدول الحصص بانسيابية عند النزول إليه بالماوس */
+    .day {
+        animation: fadeInUp linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 25%;
+    }
+
+    /* ظهور كروت المواد في الصفحة الرئيسية تدريجياً أثناء التمرير */
+    .subject-card {
+        animation: fadeInUp linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 30%;
+    }
+
+    /* ظهور بطاقة تفاصيل المادة في صفحات المواد */
+    .subject-detail-card {
+        animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 30%;
+    }
+
+    /* ظهور الفوتر بانسيابية في نهاية الصفحة */
+    .site-footer {
+        animation: fadeInUp linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 20%;
+    }
+}

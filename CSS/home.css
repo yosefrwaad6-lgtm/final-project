@@ -1,0 +1,112 @@
+/* =====================================================
+   Home page styles (index.html only)
+   تنسيقات الصفحة الرئيسية للموقع
+   يتم تحميل هذا الملف بعد style.css لاستخدام نفس المتغيرات
+   ===================================================== */
+
+
+/* -----------------------------------------------------
+   1. قسم الواجهة الترحيبية (Hero Section)
+   ----------------------------------------------------- */
+
+/* القسم الترحيبي أعلى الصفحة الرئيسية */
+.hero {
+    padding-block: 3.5rem;                    /* مسافة علوية وسفلية واسعة (56px) */
+    border-bottom: 1px solid var(--slate-100);/* خط فاصل أسفل القسم بلون هادئ */
+}
+
+/* تحديد أقصى عرض للعنوان الترحيبي ليلتف النص بشكل جمالي */
+.hero h1 {
+    max-width: 16ch; /* يلتف بعد حوالي 16 حرفاً */
+}
+
+/* ملاحظة الفصل الدراسي (First term, 2026/2027) */
+.hero-note {
+    margin-bottom: 1.75rem;
+    color: var(--teal-600); /* لون تيل مميز (#0A7075) */
+    font-weight: 500;
+}
+
+
+/* -----------------------------------------------------
+   2. أهداف التمرير والشبكة (Scroll Targets & Grid)
+   ----------------------------------------------------- */
+
+/* تحديد هامش أمان أعلى القسمين عند الضغط على الروابط
+   لتفادي اختفاء بداية القسم خلف شريط الهيدر الثابت */
+#timetable,
+#subjects {
+    scroll-margin-top: 5rem; /* مسافة 80px من أعلى الشاشة */
+}
+
+/* خط فاصل أسفل قسم الجدول لفصله عن قسم المواد */
+.timetable-section {
+    border-bottom: 1px solid var(--slate-100);
+}
+
+/* شبكة عرض بطاقات المواد (CSS Grid) */
+.subject-grid {
+    display: grid;
+    /* تقسيم الأعمدة تلقائياً حسب حجم الشاشة (أقل عرض للكارت 260px) */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;         /* المسافة بين كروت المواد (16px) */
+    margin-top: 1.5rem;
+}
+
+
+/* -----------------------------------------------------
+   3. بطاقة المادة الفردية (Subject Card)
+   الكارت بالكامل عبارة عن رابط قابل للنقر ينقل لصفحة تفاصيل المادة
+   ----------------------------------------------------- */
+.subject-card {
+    display: flex;
+    flex-direction: column;            /* ترتيب العناصر رأسياً داخل الكارت */
+    align-items: flex-start;           /* محاذاة العناصر من البداية */
+    gap: 0.6rem;                       /* مسافة بين كود المادة واسمها والرابط */
+    padding: 1.25rem;                  /* مسافة داخلية للكارت (20px) */
+    border: 1px solid var(--teal-200); /* إطار تيل ناعم */
+    border-radius: 12px;               /* حواف دائرية عصرية */
+    background: #ffffff;               /* خلفية بيضاء تبرز على خلفية الصفحة */
+    color: var(--color-text);
+    text-decoration: none;             /* إزالة الخط السفلي للرابط */
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* تأثير مرور الماوس على كارت المادة */
+.subject-card:hover {
+    border-color: var(--teal-400);     /* إطار فيروزي مشرق (#0C969C) */
+    background: var(--teal-50);        /* خلفية تيل باهتة */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(10, 112, 117, 0.12);
+}
+
+/* بادج كود المادة أعلى الكارت (مثل IT201, IT202) */
+.subject-code {
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    background: var(--teal-600);       /* خلفية تيل محيطي (#0A7075) */
+    color: #ffffff;                    /* نص فاتح عالي الوضوح */
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+/* اسم المادة داخل الكارت */
+.subject-card h3 {
+    margin: 0;
+    color: var(--color-heading);
+}
+
+/* رابط "Open subject" أسفل الكارت */
+.subject-link {
+    margin-top: auto;                  /* يلتصق بأسفل الكارت دائماً */
+    color: var(--teal-600);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+/* إضافة خط سفلي للرابط وتغيير لونه عند مرور الماوس على الكارت */
+.subject-card:hover .subject-link {
+    color: var(--teal-400);            /* فيروزي نشط (#0C969C) */
+    text-decoration: underline;
+}

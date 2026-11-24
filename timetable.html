@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<!-- تعريف نوع المستند كـ HTML5 واللغة الإنجليزية -->
+<html lang="en">
+
+<head>
+    <!-- ترميز الحروف العالمي UTF-8 لدعم كل اللغات -->
+    <meta charset="UTF-8">
+    <!-- جعل الصفحة متجاوبة مع الهواتف والشاشات المختلفة -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable | IT second year</title>
+
+    <!-- ربط خطوط Google Fonts لتسريع التحميل والتوافق -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- ربط ملفات التنسيق CSS -->
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/timetable.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         شريط الهيدر العلوي والتنقل (Sticky Header & Nav)
+         ===================================================== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="site-name" href="index.html">IT second year</a>
+            <nav aria-label="Main">
+                <ul class="nav-list">
+                    <li><a href="index.html"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Home</a></li>
+                    <li><a href="timetable.html"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>Timetable</a></li>
+                    <li><a href="index.html#subjects"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v16"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/></svg>Subjects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =====================================================
+             قسم عنوان الجدول ودليل الألوان (Legend)
+             ===================================================== -->
+        <section class="section picker-section">
+            <div class="container">
+                <h1>Timetable</h1>
+                <p>First term, 2026/2027. Weekly timetable for all lectures and sections.</p>
+
+                <!-- دليل يوضح الفرق اللوني بين المحاضرة والسكشن -->
+                <ul class="legend">
+                    <li><span class="swatch kind-lecture"></span>Lecture</li>
+                    <li><span class="swatch kind-section"></span>Section</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             قسم أيام الأسبوع وعرض بطاقات الحصص بالكامل
+             ===================================================== -->
+        <section class="section timetable-days">
+            <div class="container">
+
+                <!-- ------------------ يوم الأحد (Sunday) ------------------ -->
+                <div class="day">
+                    <h3>Sunday</h3>
+                    <div class="card-list">
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 4</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 5</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Section, Practical, Lab 2</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 6</span>
+                            </div>
+                            <p class="card-title">PHYS201 Electronics</p>
+                            <p class="card-meta">Section, Practical</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">10:00 AM to 12:00 PM</p>
+                                <span class="card-group">Groups 4, 5, 6, 7</span>
+                            </div>
+                            <p class="card-title">MATH203 Numerical Analysis</p>
+                            <p class="card-meta">Lecture, Hall 2, Dr. Heba Hamdy</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">10:00 AM to 12:00 PM</p>
+                                <span class="card-group">Group 1</span>
+                            </div>
+                            <p class="card-title">PHYS201 Electronics</p>
+                            <p class="card-meta">Section, Practical</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">12:00 PM to 2:00 PM</p>
+                                <span class="card-group">Groups 1, 2, 3</span>
+                            </div>
+                            <p class="card-title">MATH203 Numerical Analysis</p>
+                            <p class="card-meta">Lecture, Hall 2, Dr. Heba Hamdy</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">12:00 PM to 2:00 PM</p>
+                                <span class="card-group">Group 7</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">12:00 PM to 2:00 PM</p>
+                                <span class="card-group">Group 5</span>
+                            </div>
+                            <p class="card-title">PHYS201 Electronics</p>
+                            <p class="card-meta">Section, Practical</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">2:00 PM to 4:00 PM</p>
+                                <span class="card-group">Group 2</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- ------------------ يوم الاثنين (Monday) ------------------ -->
+                <div class="day">
+                    <h3>Monday</h3>
+                    <div class="card-list">
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">11:00 AM to 1:00 PM</p>
+                                <span class="card-group">Groups 4, 5, 6, 7</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Lecture, Hall 2, Assoc. Prof. Ahmed Omar</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">11:00 AM to 1:00 PM</p>
+                                <span class="card-group">Group 3</span>
+                            </div>
+                            <p class="card-title">MATH203 Numerical Analysis</p>
+                            <p class="card-meta">Section, Tutorial, Hall 202</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">1:00 PM to 3:00 PM</p>
+                                <span class="card-group">Groups 1, 2, 3</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Lecture, Hall 2, Assoc. Prof. Ahmed Omar</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">2:00 PM to 4:00 PM</p>
+                                <span class="card-group">Groups 4, 5, 6, 7</span>
+                            </div>
+                            <p class="card-title">PHYS201 Electronics</p>
+                            <p class="card-meta">Lecture, Hall 1, Dr. Somaya</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">4:00 PM to 6:00 PM</p>
+                                <span class="card-group">Groups 1, 2, 3</span>
+                            </div>
+                            <p class="card-title">PHYS201 Electronics</p>
+                            <p class="card-meta">Lecture, Hall 1, Dr. Ali Abdelhalim</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- ------------------ يوم الثلاثاء (Tuesday) ------------------ -->
+                <div class="day">
+                    <h3>Tuesday</h3>
+                    <div class="card-list">
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 6</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Section, Practical, Lab 4</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 2</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Section, Practical, Lab 4</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Groups 4, 5</span>
+                            </div>
+                            <p class="card-title">MATH203 Numerical Analysis</p>
+                            <p class="card-meta">Section, Tutorial, Hall 204</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 7</span>
+                            </div>
+                            <p class="card-title">PHYS201 Electronics</p>
+                            <p class="card-meta">Section, Practical</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">10:00 AM to 12:00 PM</p>
+                                <span class="card-group">Group 1</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Section, Practical, Lab 4</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">10:00 AM to 12:00 PM</p>
+                                <span class="card-group">Group 4</span>
+                            </div>
+                            <p class="card-title">PHYS201 Electronics</p>
+                            <p class="card-meta">Section, Practical</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">11:00 AM to 1:00 PM</p>
+                                <span class="card-group">Group 6</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">12:00 PM to 2:00 PM</p>
+                                <span class="card-group">Groups 2, 3</span>
+                            </div>
+                            <p class="card-title">PHYS201 Electronics</p>
+                            <p class="card-meta">Section, Practical</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">1:00 PM to 3:00 PM</p>
+                                <span class="card-group">Group 5</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Section, Practical, Lab 4</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">2:00 PM to 4:00 PM</p>
+                                <span class="card-group">Group 3</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">3:00 PM to 5:00 PM</p>
+                                <span class="card-group">Group 7</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Section, Practical, Lab 4</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- ------------------ يوم الأربعاء (Wednesday) ------------------ -->
+                <div class="day">
+                    <h3>Wednesday</h3>
+                    <div class="card-list">
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 5</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Section, Practical, Lab 2</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 4</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 1</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Groups 6, 7</span>
+                            </div>
+                            <p class="card-title">MATH203 Numerical Analysis</p>
+                            <p class="card-meta">Section, Tutorial, Hall 103</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">10:00 AM to 12:00 PM</p>
+                                <span class="card-group">Groups 1, 2, 3</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Lecture, Hall 3, Dr. Tarek Abdelhafiz</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">10:00 AM to 12:00 PM</p>
+                                <span class="card-group">Group 6</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">10:00 AM to 12:00 PM</p>
+                                <span class="card-group">Group 7</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">12:00 PM to 2:00 PM</p>
+                                <span class="card-group">Groups 4, 5, 6, 7</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Lecture, Hall 3, Dr. Tarek Abdelhafiz</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">12:00 PM to 2:00 PM</p>
+                                <span class="card-group">Group 1</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">12:00 PM to 2:00 PM</p>
+                                <span class="card-group">Group 2</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">2:00 PM to 4:00 PM</p>
+                                <span class="card-group">Group 3</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- ------------------ يوم الخميس (Thursday) ------------------ -->
+                <div class="day">
+                    <h3>Thursday</h3>
+                    <div class="card-list">
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Group 5</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">8:00 AM to 10:00 AM</p>
+                                <span class="card-group">Groups 1, 2</span>
+                            </div>
+                            <p class="card-title">MATH203 Numerical Analysis</p>
+                            <p class="card-meta">Section, Tutorial, Amphitheater 5</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">9:00 AM to 11:00 AM</p>
+                                <span class="card-group">Group 4</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Section, Practical, Lab 4</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">9:00 AM to 11:00 AM</p>
+                                <span class="card-group">Group 7</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Section, Practical, Lab 3</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">9:00 AM to 11:00 AM</p>
+                                <span class="card-group">Group 6</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Section, Practical, Lab 2</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">9:00 AM to 11:00 AM</p>
+                                <span class="card-group">Group 3</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Section, Practical, Lab 2</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">11:00 AM to 1:00 PM</p>
+                                <span class="card-group">Groups 4, 5, 6, 7</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Lecture, Hall 3, Dr. Ahmed Hamdy</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">11:00 AM to 1:00 PM</p>
+                                <span class="card-group">Group 3</span>
+                            </div>
+                            <p class="card-title">IT201 Web</p>
+                            <p class="card-meta">Section, Practical, Lab 4</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">11:00 AM to 1:00 PM</p>
+                                <span class="card-group">Group 2</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Section, Practical, Lab 3</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">11:00 AM to 1:00 PM</p>
+                                <span class="card-group">Group 1</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Section, Practical, Lab 2</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">1:00 PM to 3:00 PM</p>
+                                <span class="card-group">Groups 4, 5, 6, 7</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Lecture, Hall 2, Dr. Bilal</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">1:00 PM to 3:00 PM</p>
+                                <span class="card-group">Groups 1, 2, 3</span>
+                            </div>
+                            <p class="card-title">IT203 C#</p>
+                            <p class="card-meta">Lecture, Hall 3, Dr. Ahmed Hamdy</p>
+                        </article>
+                        <article class="class-card kind-lecture">
+                            <div class="card-header">
+                                <p class="card-time">3:00 PM to 5:00 PM</p>
+                                <span class="card-group">Groups 1, 2, 3</span>
+                            </div>
+                            <p class="card-title">IT202 Digital Technology</p>
+                            <p class="card-meta">Lecture, Hall 2, Dr. Bilal</p>
+                        </article>
+                        <article class="class-card kind-section">
+                            <div class="card-header">
+                                <p class="card-time">3:00 PM to 5:00 PM</p>
+                                <span class="card-group">Group 4</span>
+                            </div>
+                            <p class="card-title">IT205 Database</p>
+                            <p class="card-meta">Section, Practical, Lab 1</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         الفوتر (Footer)
+         ===================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>IT second year, Faculty of Science, IT Department</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

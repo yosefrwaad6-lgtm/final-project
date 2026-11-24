@@ -1,0 +1,163 @@
+/* =====================================================
+   Timetable styles (index.html & timetable.html)
+   تنسيقات جدول المحاضرات والسكاشن
+   يتم تحميل هذا الملف بعد style.css لاستخدام نفس المتغيرات
+   يعرض جميع المحاضرات والسكاشن على مدار أيام الأسبوع
+   ===================================================== */
+
+
+/* -----------------------------------------------------
+   1. دليل الألوان والمصطلحات (Legend)
+   لتوضيح الفرق بين ألوان المحاضرة والسكشن
+   ----------------------------------------------------- */
+
+/* حاوية قائمة دليل الألوان */
+.legend {
+    display: flex;
+    flex-wrap: wrap;                 /* تلتف العناصر تلقائياً على الشاشات الصغيرة */
+    gap: 1.25rem;                    /* مسافة بين عنصر المحاضرة والسكشن */
+    margin: 1.5rem 0 1.25rem;        /* مسافات علوية وسفلية */
+    padding: 0;
+    list-style: none;                /* إزالة الترقيم النقطي الافتراضي */
+}
+
+/* العنصر الفردي في الدليل (المربع الملون + الكلمة) */
+.legend li {
+    display: flex;
+    align-items: center;             /* محاذاة المربع الملون مع النص رأسياً */
+    gap: 0.5rem;                     /* مسافة بين المربع الملون والكلمة */
+    font-weight: 500;
+}
+
+/* المربع اللوني الصغير في الدليل */
+.swatch {
+    width: 1rem;                     /* العرض 16px */
+    height: 1rem;                    /* الارتفاع 16px */
+    border-radius: 4px;              /* استدارة طفيفة للحواف */
+}
+
+/* مربع لون المحاضرة (تيل فاتح مع إطار رقيق) */
+.swatch.kind-lecture {
+    background: var(--color-lecture);
+    border: 1px solid var(--teal-200);
+}
+
+/* مربع لون السكشن (أزرق بترولي من اللوحة) */
+.swatch.kind-section {
+    background: var(--color-section);
+}
+
+
+/* -----------------------------------------------------
+   2. تنظيم الأيام والبطاقات (Days & Cards Grid)
+   ----------------------------------------------------- */
+
+/* مسافة سفلية خفيفة لقسم العنوان */
+.picker-section {
+    padding-bottom: 0.5rem;
+}
+
+/* حاوية أيام الجدول بالكامل (ظاهرة بشكل افتراضي) */
+.timetable-days {
+    display: block;
+}
+
+/* حاوية اليوم الواحد (مثل الأحد، الاثنين، إلخ) */
+.day {
+    margin-bottom: 2.5rem;           /* مسافة كافية بين كل يوم واليوم الذي يليه */
+}
+
+/* عنوان اليوم (Sunday, Monday, إلخ) */
+.day h3 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid var(--slate-200); /* خط ناعم بلون الباليت (#6BA3BE) أسفل اسم اليوم */
+    color: var(--color-heading);
+}
+
+/* شبكة كروت الحصص لليوم الواحد (CSS Grid المتجاوب) */
+.card-list {
+    display: grid;
+    /* يتوزع عدد الكروت تلقائياً على عرض الشاشة، بحيث لا يقل عرض الكارت عن 260px */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;                    /* المسافة بين كروت الحصص */
+}
+
+/* بطاقة الحصة الأساسية (Class Card) */
+.class-card {
+    display: flex;
+    flex-direction: column;          /* ترتيب محتوى الكارت رأسياً */
+    padding: 0.9rem 1rem;            /* مسافة داخلية للكارت */
+    border-radius: var(--radius);    /* حواف دائرية (10px) */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.class-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(3, 47, 48, 0.18);
+}
+
+/* تنسيق كارت المحاضرة (خلفية تيل فاتحة مع نص داكن عالي التباين) */
+.class-card.kind-lecture {
+    background: var(--color-lecture);
+    color: var(--color-lecture-text);
+    border: 1px solid var(--teal-200);
+}
+
+/* تنسيق كارت السكشن (خلفية كحلي بترولي #274D60 مع نص أبيض) */
+.class-card.kind-section {
+    background: var(--color-section);
+    color: var(--color-section-text);
+}
+
+/* الجزء العلوي للكارت (يضع الوقت على اليسار ورقم السكشن/المجموعة على اليمين) */
+.card-header {
+    display: flex;
+    justify-content: space-between;  /* توزيع الوقت والمجموعة على طرفي الكارت */
+    align-items: center;             /* محاذاة رأسية متناسقة */
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+/* وقت الحصة (مثل 8:00 AM to 10:00 AM) */
+.card-time {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* شارة أو بادج المجموعة/السكشن (Group Badge) */
+.card-group {
+    font-size: 0.75rem;              /* خط صغير وأنيق */
+    font-weight: 600;                /* خط عريض للوضوح */
+    padding: 0.15rem 0.5rem;         /* مسافة داخلية للبادج */
+    border-radius: 4px;              /* حواف مستديرة للبادج */
+    white-space: nowrap;             /* منع انقسام النص على سطرين */
+}
+
+/* ألوان بادج المجموعة في كروت المحاضرات (تيل داكن على نص فاتح) */
+.kind-lecture .card-group {
+    background: var(--teal-600);
+    color: #ffffff;
+}
+
+/* ألوان بادج المجموعة في كروت السكاشن (أزرق رمادي ناعم #6BA3BE على نص داكن) */
+.kind-section .card-group {
+    background: var(--slate-200);
+    color: var(--teal-900);
+}
+
+/* اسم المادة داخل الكارت (مثل IT203 C#) */
+.card-title {
+    margin: 0.2rem 0 0.25rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+/* تفاصيل القاعة ونوع الحصة واسم الدكتور أو المعيد */
+.card-meta {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;                    /* شفافية طفيفة لتمييزها عن العنوان الرئيسي */
+}
